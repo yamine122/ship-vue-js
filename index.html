@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<div id="app-1">{{ message }}</div>
+	<div id="app-2">
+		<span v-bind:title="message">마우스를 올려라</span>
+	</div>
+	<div id="app-3">
+		<p v-if="seen">이제 나를 볼 수 있어요</p>
+	</div>
+	<div id="app-4">
+		<ol>
+			<li v-for="todo of todos">{{ todo.text }}</li>
+		</ol>
+	</div>
+	<div id="app-5">
+		<p>{{ message }}</p>
+		<button v-on:click="reverseMessage">메세지 뒤집기</button>
+	</div>
+	<div id="app-6">
+		<p>{{ message }}</p>
+		<input v-model="message">
+	</div>
+	<script>
+		const app1 = new Vue({
+			el : '#app-1',
+			data : {
+				message : `ㄱㄱ`
+			}
+		})
+		const app2 = new Vue({
+			el : '#app-2',
+			data : {
+				message : `이 데이터는 ${new Date()} 에만들었다`
+			}
+		})
+		const app3 = new Vue({
+			el : '#app-3',
+			data : {
+				seen : true
+			}
+		})
+		const app4 = new Vue({
+			el : '#app-4',
+			data : {
+				todos : [
+					{text : 'Javascript 배우기'},
+					{text : 'vue 배우기'},
+					{text : '만들기'}
+				]
+			}
+		})
+		const app5 = new Vue({
+			el : '#app-5',
+			data : {
+				message : 'ㅎㅇ vue.js'
+			},
+			methods : {
+				reverseMessage : function(){
+					this.message = this.message.split('').reverse().join('')
+				}
+			}
+		})
+		const app6 = new Vue({
+			el : '#app-6',
+			data : {
+				message : 'ㅎㅇ vue.js'
+			}
+		})
+
+	</script>
+</body>
+</html>
